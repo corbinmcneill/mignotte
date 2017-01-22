@@ -1,6 +1,6 @@
 from sys import argv
 from operator import mul
-from math import log
+import math
 
 Q = [ 179424673, 179426549, 179428399, 179430413, 179432233, 179434033]
 K = 3;
@@ -15,7 +15,7 @@ for i in range(K):
 	b*=Q[i]
 b-=1
 
-bitsPerSecret = log(b-a, 2)
+bitsPerSecret = int(math.log(b-a, 2))
 bytesPerSecret = bitsPerSecret / 8 
 
 M=1
@@ -43,7 +43,6 @@ def split(infile, outfile):
 	print "b: ", b
 	assert(b>a)
 	print("b-a:", b-a)
-	print("Starting split")
 	message = infile.readline()
 	for i in range((len(message)-1)/bytesPerSecret + 1):
 		try:
@@ -83,7 +82,6 @@ def combine(infile, outfile):
 		if shares == '':
 			break
 		shares = map(int, shares.split(',')[:-1])
-		print shares
 		for i in range(K):
 			mprime = M / Q[i]
 			S += (shares[i] * exteuclid(Q[i], mprime) * mprime)
