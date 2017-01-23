@@ -1,4 +1,4 @@
-# Secret-Sharing---Chinese-Remainder-Theorem
+# Secret Sharing - Chinese Remainder Theorem
 
 This is a python proof of concept of Mignotte's secret sharing algorithm using Chinese Remainder Theorem.<sup>[1]</sup> 
 
